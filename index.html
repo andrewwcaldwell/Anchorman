@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <link href="./css/main.css" rel="stylesheet" type="text/css">
+    <script src="js/app.js"></script>
+</head>
+
+<body ng-app="AnchormanApp">
+    <header class="columns">
+        <h1><img src="ron.png" />Anchorman</h1>
+    </header>
+    <ul id="navbar" class="columns">
+        
+        <a href="#/home"><li>Home</li></a>
+        <a href="#/interests"><li>Interests</li></a>
+        <a href="#/saved"><li>Saved</li></a>    
+    </ul>
+    <div id="content" class="columns" ng-view></div>
+
+        <main ng-controller="NewsArticleList">
+        <h2>BREAKING NEWS: {{
+            current.article }}</h2>
+            
+        <input id="search" type="text" ng-model="pancake">
+        <ul>
+            <li ng-repeat="article in news | filter: pancake">
+                <div id="stories">
+                    <p id="title"><a href="{{ article.link }}">{{ article.title }}</a></p>
+                    <p id="published">Published on {{ article.published }}</p>
+                    
+                </div> 
+            </li>
+        </ul>
+        </main>
+    
+    <main id="content">
+       <div id="home-view"></div>
+       <div id="interests-view"></div>
+        <div id="saved-view"></div>
+    </main>
+     
+</body>
+
+</html>
