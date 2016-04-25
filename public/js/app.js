@@ -50,4 +50,6 @@ app.factory('NewsService', function ($http) {
     };   
 });
 
+
+
 },{}]},{},[1])

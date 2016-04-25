@@ -48,3 +48,5 @@ app.factory('NewsService', function ($http) {
         }
     };   
 });
+
+
