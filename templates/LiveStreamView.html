@@ -1,0 +1,10 @@
+<h2>BREAKING NEWS: {{ current.article }}</h2>
+<input id="search" type="text" ng-model="pancake">
+<ul>
+    <li ng-repeat="article in news | filter: pancake">
+        <div id="stories">
+            <p id="title"><a href="{{ article.link }}">{{ article.title }</a></p>
+            <p id="published">Published on {{ article.published }}</p>            
+        </div> 
+    </li>
+</ul>

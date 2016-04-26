@@ -1,33 +1,46 @@
-var app = angular.module('AnchormanApp', []);
+/* es next = true */
+'use strict';
+/// MUST RUN PYTHON FROM PUBLIC DIRECTORY w/ TERMINAL
+/// Run : python -m SimpleHTTPServer
+/// In Browser set address to: localhost:8000
 
+require('./controllers');
+require('./factory');
 
-app.controller('NewsArticleList', ['$scope', 'NewsService', function ($scope, NewsService) {
-    
-   
-    
-//    function loadArticles(articles) {
-//        $scope.news = articles;
-//    }
-//    
-//    $scope.news = [];
-//    NewsService.getArticles(loadArticles);
-//    $scope.current = {
-//        title: 'none yet'
-//    };
-     $scope.articles = [];
-     $scope.pancake = '';
-    
-    
-    $scope.news = NewsService.getArticles();
+var app = angular.module('AnchormanApp', [
+        'ngRoute', 
+        'NewsAppControllers',
+        'NewsAppFactory',
+    ]);
+
+app.config(['$routeProvider', function($routeProvider) {
+    $routeProvider.
+        when('/userId/news', {
+            controller: 'LiveStreamController',
+            templateUrl: 'templates/LiveStreamView.html',
+        }).
+        when('/userId/interests', {
+            controller: 'IntrestSettingController',
+            templateUrl: 'templates/IntrestSettingView.html',
+        }).
+        when('/userId/bookmarks', {
+            controller: 'BookmarkController',
+            templateUrl: 'templates/BookmarkView.html'
+        }).
+        otherwise({
+            redirectTo: '/userId/news'
+        });
+    console.log('Router Hot');
 }]);
 
+////// ALL CONTROLLERS IN CONTROLLERS.JS //////
+////// See Require.js Requirements ABOVE //////
+
+
+/*
 app.factory('NewsService', function ($http) {
     var news = [];      // all articles
     var current = {};   // current article
-       
-    
-   
-    
     
     // not done
     $http({
@@ -45,8 +58,12 @@ app.factory('NewsService', function ($http) {
     return {
         getArticles: function () {
             return news;
+        },
+        
+        silento: function () {
+            return 'Watch me WHIP! now watch me NAE NAE!';
         }
     };   
 });
-
+*/
 
