@@ -1,10 +1,42 @@
+<!--- NOTES FOR EDITING:
+--------------------------------------------------
+
+1) Please DON"T restructure HTML w/o some sort of conversation - particularly towards semantics
+**** ADDITIONS SEEM UNNECESSARY at this point.
+
+2) IDs / Classes can be changed as needed 
+
+3) Personal preferance to assign classes for CSS work only.
+
+4) Hold IDs for things requiring Jscript actions only 
+when possible. 
+
+
+PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
+------------------------------------------------->
+
 <h2>BREAKING NEWS: {{ current.article }}</h2>
+
+<!-- DOES INPUT NEED LABEL OR PLACEHOLDER??  -->
 <input id="search" type="text" ng-model="pancake">
+
 <ul>
     <li ng-repeat="article in news | filter: pancake">
-        <div id="stories">
-            <p id="title"><a href="{{ article.link }}">{{ article.title }}</a></p>
-            <p id="published">Published on {{ article.published }}</p>            
-        </div> 
+        
+        <a href="{{ article.link }}"> <img ng-src="../resource/globe.png"/> </a>
+        
+        <section id="stories">
+            
+            <p id="title"><a href="{{ article.link }}"> {{ article.title }} </a></p>
+            
+            <img src="../resource/bookmark.png" ng-click="clickSendID( article.id )">
+            
+            <p id="published">Published on {{ article.published }} </p>
+            
+            <!--- So Far as I can tell, no summary is available from the API  -->
+            <p> Summary ?? is </p>
+        
+        </section> 
+
     </li>
 </ul>
