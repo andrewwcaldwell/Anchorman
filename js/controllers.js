@@ -50,6 +50,12 @@ module.exports = (function() {
         
         // Code to Test Factory Link
         console.log(NewsService.silento());
+        
+        // Code to Get Initial Feed Articles
+        $scope.news = NewsService.getBookmarks();
+        
+        // Code to Un-Bookmark an Articles
+        $scope.clickSendID = function(ID) {NewsService.removeBookmark(ID);};
     }]);
     
     

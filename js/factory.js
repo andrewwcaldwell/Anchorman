@@ -25,10 +25,16 @@ module.exports = (function() {
                 return news;
             },
             
+            /// Function to Deliver Bookmarks Array to Bookmarks
+             getBookmarks: function () {
+                console.log(bookmarks);
+                return bookmarks;
+            },
+            
             /// Function to Push Selected Article to Bookmarks Array
             setBookmark: function(input) {
                 for (let i = 0; i < news.length; i++) {
-                    if ( news[i].id === input) {
+                    if (news[i].id === input) {
                         bookmarks.push(news[i]);
                     }
                 }
@@ -36,6 +42,19 @@ module.exports = (function() {
                 console.log(bookmarks);
                 return bookmarks;
             },
+            
+            /// Function to Pop Selected Article From Bookmarks Array
+            removeBookmark: function(input) {
+                for (let i = 0; i < bookmarks.length; i++) {
+                    if (bookmarks[i].id === input) {
+                        bookmarks.splice(i, 1);
+                    }
+                }
+                console.log('un-bookmark clicked');
+                console.log(bookmarks);
+                return bookmarks;
+            },
+            
             
             /// Function for Calling in Controller to verify Link-up
             silento: function () {
