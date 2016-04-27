@@ -4,6 +4,7 @@ module.exports = (function() {
     newsFactory.factory('NewsService', function ($http) {
         var news = [];      // all articles
         var current = {};   // current article
+        var bookmarks = [];  // bookmarked articles
     
         // not done
         $http({
@@ -15,15 +16,32 @@ module.exports = (function() {
             }
             //        news = results.data.stories
         });
-    
+        
         return {
+            
+            /// Function to Deliver News Array to Feed/Input
             getArticles: function () {
+                console.log(news);
                 return news;
             },
-        
+            
+            /// Function to Push Selected Article to Bookmarks Array
+            setBookmark: function(input) {
+                for (let i = 0; i < news.length; i++) {
+                    if ( news[i].id === input) {
+                        bookmarks.push(news[i]);
+                    }
+                }
+                console.log('bookmark clicked');
+                console.log(bookmarks);
+                return bookmarks;
+            },
+            
+            /// Function for Calling in Controller to verify Link-up
             silento: function () {
                 return 'Watch me WHIP! now watch me NAE NAE!';
-            }
+            },
+            
         };   
     });
 
