@@ -15,4 +15,15 @@ when possible.
 PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 ------------------------------------------------->
 
-<h2> INTRESTS COMING </h2>
+<h2> INTERESTS COMING </h2>
+<span class="interestPanel">
+    <input id="interestInput" type="text" ng-model="interest"/>
+    <img src="../resource/add.png" ng-click="clickSendInput( interest )"/>
+</span>
+
+<p> {{ interest }} </p>
+
+<!--ul>
+    <li ng-repeat="intrest in intrests">
+    </li>
+</ul-->

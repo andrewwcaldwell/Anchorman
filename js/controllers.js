@@ -40,6 +40,14 @@ module.exports = (function() {
         
         // Code to Test Factory Link
         console.log(NewsService.silento());
+        
+        // Code to Un-Bookmark an Articles
+        //$scope.clickSendInput = function(input) {NewsService.removeBookmark(input);};
+        $scope.clickSendInput = function(input) {console.log(input);
+        let a = document.getElementById('interestInput');
+        a.value = '';
+        };
+        
     }]);
     
     ////// Controller for BOOKMARKS //////
