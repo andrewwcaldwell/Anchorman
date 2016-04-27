@@ -17,13 +17,15 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 
 <h2> INTERESTS COMING </h2>
 <span class="interestPanel">
-    <input id="interestInput" type="text" ng-model="interest"/>
-    <img src="../resource/add.png" ng-click="clickSendInput( interest )"/>
+    <input id="interestInput" type="text" ng-model="newInterest"/>
+    <img src="../resource/add.png" ng-click="clickSendInput( newInterest )"/>
 </span>
 
-<p> {{ interest }} </p>
+<p> {{ newInterest }} </p>
 
-<!--ul>
-    <li ng-repeat="intrest in intrests">
+<ul>
+    <li ng-repeat="interest in interests">
+        <p> {{ interest }} </p>
+        <img src="../resource/delete.png" ng-click="clickSendID( interest )">
     </li>
-</ul-->
+</ul>
