@@ -20,8 +20,8 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'templates/LiveStreamView.html',
         }).
         when('/userId/interests', {
-            controller: 'IntrestSettingController',
-            templateUrl: 'templates/IntrestSettingView.html',
+            controller: 'InterestSettingController',
+            templateUrl: 'templates/InterestSettingView.html',
         }).
         when('/userId/bookmarks', {
             controller: 'BookmarkController',

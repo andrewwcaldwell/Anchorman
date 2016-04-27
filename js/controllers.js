@@ -32,11 +32,11 @@ module.exports = (function() {
 //      };
     }]);
 
-    ////// Controller for INTRESTS //////
-    controllers.controller('IntrestSettingController', ['$scope', 'NewsService', function ($scope, NewsService) {
+    ////// Controller for INTERESTS //////
+    controllers.controller('InterestSettingController', ['$scope', 'NewsService', function ($scope, NewsService) {
         
         // Code to test View / Router
-        console.log('Intrests Settings View Working');
+        console.log('Interests Settings View Working');
         
         // Code to Test Factory Link
         console.log(NewsService.silento());
