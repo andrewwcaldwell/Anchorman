@@ -20,8 +20,8 @@ module.exports = (function() {
 //      };
     }]);
 
-    controllers.controller('IntrestSettingController', ['$scope', 'NewsService', function ($scope, NewsService) {
-        console.log('Intrests Settings View Working');
+    controllers.controller('InterestSettingController', ['$scope', 'NewsService', function ($scope, NewsService) {
+        console.log('Interests Settings View Working');
         console.log(NewsService.silento());
     }]);
 
