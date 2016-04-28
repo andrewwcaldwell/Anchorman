@@ -5,21 +5,16 @@ module.exports = (function() {
     controllers.controller('LiveStreamController', ['$scope', 'NewsService', function ($scope, NewsService) {
         
         // Code to test View / Router
-        console.log('Live Stream View Working');
+        //console.log('Live Stream View Working');
         
         // Code to Test Factory Link
         console.log(NewsService.silento());
-        
-        // SADIE CODE BELOW, WHY???
-        $scope.articles = [];
-        //$scope.pancake = '';
-        
+
         // Code to Get Initial Feed Articles
         $scope.news = NewsService.getArticles();
         
         // Code to Bookmark an Article
-        $scope.clickSendID = function(ID) {NewsService.setBookmark(ID);};
-        
+        $scope.clickSendID = function(ID) {NewsService.setBookmark(ID);};        
         
 //      function loadArticles(articles) {
 //          $scope.news = articles;
@@ -36,10 +31,10 @@ module.exports = (function() {
     controllers.controller('InterestSettingController', ['$scope', 'NewsService', function ($scope, NewsService) {
         
         // Code to test View / Router
-        console.log('Interests Settings View Working');
+        //console.log('Interests Settings View Working');
         
         // Code to Test Factory Link
-        console.log(NewsService.silento());
+        //console.log(NewsService.silento());
         
         // Code to Add an Interest & Clear Input
         $scope.clickSendInput = function(input) {
@@ -62,10 +57,10 @@ module.exports = (function() {
     controllers.controller('BookmarkController', ['$scope', 'NewsService', function ($scope, NewsService) {
         
         // Code to test View / Router
-        console.log('Bookmarks View Working');
+        //console.log('Bookmarks View Working');
         
         // Code to Test Factory Link
-        console.log(NewsService.silento());
+        //console.log(NewsService.silento());
         
         // Code to Get Bookmarked Articles
         $scope.news = NewsService.getBookmarks();

@@ -2,13 +2,49 @@
 module.exports = (function() {
     var newsFactory = angular.module('NewsAppFactory', []);
     
-    newsFactory.factory('NewsService', function ($http) {
-        var news = [];      // all articles
-        var current = {};   // current article
+    newsFactory.factory('NewsService', function ($http, $q) {
+        var news = [];       // all articles
+        var current = {};    // current article
         var bookmarks = [];  // bookmarked articles
         var interests = [];  // all interests
-    
-        // not done
+        var publishers = []; // all publishers
+        var combo = [];
+        
+        
+        /// THE KAMEHAMEHA PROMISE FOR API AJAX
+        /// CALLS FEED AND PUBLISHER AND BLENDS INTO ONE 
+        var feed = $http({
+            url: 'http://chat.queencityiron.com/api/news/latest',
+            method: 'get'
+        });
+        
+        var pubs = $http({
+            url: 'http://chat.queencityiron.com/api/publishers',
+            method: 'get'
+        });
+        
+        $q.all([feed, pubs]).then(function(results) {
+            
+            for (let i = 0; i < results[0].data.stories.length; i++) {
+                results[0].data.stories[i].provider = '';
+                results[0].data.stories[i].logo = '';
+                
+                for (let j = 0; j < results[1].data.providers.length; j++) {
+                    
+                    if (results[0].data.stories[i].providerId === results[1].data.providers[j].id) {
+                        results[0].data.stories[i].provider = results[1].data.providers[j].name;
+                        results[0].data.stories[i].logo = results[1].data.providers[j].logo;
+                    }
+                }
+            }
+            
+            for (let i = 0; i < results[0].data.stories.length; i++) {
+                news.push(results[0].data.stories[i]);
+            }
+        });
+        
+        //// THESE CALLS TO BOTH PUBLISHER AND FEED APIS CAN BE CANNED
+        /*// ON-LOAD REQUEST TO NEWS FEED API
         $http({
             url: 'http://chat.queencityiron.com/api/news/latest',
             method: 'get'
@@ -19,6 +55,18 @@ module.exports = (function() {
             //        news = results.data.stories
         });
         
+        /// ON-LOAD REQUEST TO PROVIDERS API
+        $http({
+            url: 'http://chat.queencityiron.com/api/publishers',
+            method: 'get'
+        }).then(function (results) {
+            for (let i = 0; i < results.data.providers.length; i++) {
+                publishers.push(results.data.providers[i]);
+            }
+            
+        }); */
+    
+        /// FACTORY RETURN OBJECT 
         return {
             
             /// Function to Deliver News Array to Feed/Input
@@ -93,7 +141,29 @@ module.exports = (function() {
                 return 'Watch me WHIP! now watch me NAE NAE!';
             },
             
+            /// Function to Deliver Publishers
+            getPublishers: function () {
+                console.log(publishers);
+                return publishers;
+            },
+
+            
         };   
     });
 
 }());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
