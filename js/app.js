@@ -6,11 +6,13 @@
 
 require('./controllers');
 require('./factory');
+require('./filters');
 
 var app = angular.module('AnchormanApp', [
-        'ngRoute', 
-        'NewsAppControllers',
-        'NewsAppFactory',
+    'ngRoute', 
+    'NewsAppControllers',
+    'NewsAppFactory',
+    'NewsAppFilters',
     ]);
 
 app.config(['$routeProvider', function($routeProvider) {

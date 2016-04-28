@@ -32,7 +32,7 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
             
             <img src="../resource/bookmark.png" ng-click="clickSendID( article.id )">
             
-            <p id="published">Published on {{ article.published }} </p>
+            <p id="published">Published {{ article.published | fromNow }} ... </p>
             
             <img ng-src="{{ article.logo }}" >
             
