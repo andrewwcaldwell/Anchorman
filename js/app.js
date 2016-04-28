@@ -30,7 +30,7 @@ app.config(['$routeProvider', function($routeProvider) {
         otherwise({
             redirectTo: '/userId/news'
         });
-    console.log('Router Hot');
+    //console.log('Router Hot');
 }]);
 
 ////// ALL CONTROLLERS IN CONTROLLERS.JS //////
