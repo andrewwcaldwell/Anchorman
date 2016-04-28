@@ -19,6 +19,7 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 
 <!-- DOES INPUT NEED LABEL OR PLACEHOLDER??  -->
 <input id="search" type="text" ng-model="pancake">
+<p> {{ pancake }} </p>
 
 <ul>
     <li ng-repeat="article in news | filter: pancake">

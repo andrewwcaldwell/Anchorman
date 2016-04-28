@@ -40,6 +40,22 @@ module.exports = (function() {
         
         // Code to Test Factory Link
         console.log(NewsService.silento());
+        
+        // Code to Add an Interest & Clear Input
+        $scope.clickSendInput = function(input) {
+            console.log(input);
+            NewsService.addInterest(input);
+            let a = document.getElementById('interestInput');
+            a.value = '';
+            $scope.newInterest = null;
+        };
+        
+        // Code to Get User Interests
+        $scope.interests = NewsService.getInterests();
+        
+        // Code to Remove an Interest
+        $scope.clickSendID = function(input) {NewsService.removeInterests(input);};
+        
     }]);
     
     ////// Controller for BOOKMARKS //////
@@ -51,7 +67,7 @@ module.exports = (function() {
         // Code to Test Factory Link
         console.log(NewsService.silento());
         
-        // Code to Get Initial Feed Articles
+        // Code to Get Bookmarked Articles
         $scope.news = NewsService.getBookmarks();
         
         // Code to Un-Bookmark an Articles

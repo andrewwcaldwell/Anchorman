@@ -21,7 +21,7 @@ app.config(['$routeProvider', function($routeProvider) {
         }).
         when('/userId/interests', {
             controller: 'InterestSettingController',
-            templateUrl: 'templates/InterestSettingView.html',
+            templateUrl: 'templates/IntrestSettingView.html',
         }).
         when('/userId/bookmarks', {
             controller: 'BookmarkController',
