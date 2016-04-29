@@ -13,6 +13,7 @@ module.exports = (function() {
         // Code to Get Initial Feed Articles
         $scope.news = NewsService.getArticles();
         
+        
         // Code to Bookmark an Article
         $scope.clickSendID = function(ID) {NewsService.setBookmark(ID);};        
         

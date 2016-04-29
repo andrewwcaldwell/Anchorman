@@ -8,7 +8,6 @@ module.exports = (function() {
         var bookmarks = [];  // bookmarked articles
         var interests = [];  // all interests
         var publishers = []; // all publishers
-        var combo = [];
         
         
         /// THE KAMEHAMEHA PROMISE FOR API AJAX
@@ -71,12 +70,26 @@ module.exports = (function() {
             
             /// Function to Deliver News Array to Feed/Input
             getArticles: function () {
+                for (let i = 0; i < news.length; i++) {
+                    news[i].interests = [];
+                    for (let j = 0; j < interests.length; j++) {
+                        var titleArr = news[i].title.split(' ');
+                        console.log(titleArr);
+                        for (let k = 0; k < titleArr.length; k++) {
+                            if (titleArr[k] === interests[j]) {
+                                news[i].interests.push(interests[j]);
+                                //console.log(news[i].interests);
+                            }
+                        }          
+                    }
+                }
+                
                 console.log(news);
                 return news;
             },
             
             /// Function to Deliver Bookmarks Array to Bookmarks Controller
-             getBookmarks: function () {
+            getBookmarks: function () {
                 console.log(bookmarks);
                 return bookmarks;
             },
@@ -106,7 +119,7 @@ module.exports = (function() {
             },
             
             /// Function to Deliver Interests Array to Interests Controller
-             getInterests: function () {
+            getInterests: function () {
                 console.log(interests);
                 return interests;
             },

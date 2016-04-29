@@ -22,23 +22,25 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 <p> {{ pancake }} </p>
 
 <ul>
-    <li ng-repeat="article in news | filter: pancake" style="border:1px solid black;">
+    <li class="article" ng-repeat="article in news | filter: pancake">
         
         <a href="{{ article.link }}"> <img ng-src="../resource/globe.png"/> </a>
         
+        <img src="../resource/bookmark.png" ng-click="clickSendID( article.id )">
+        
+        <img ng-src="{{ article.logo }}" >
         <section id="stories">
             
             <p id="title"><a href="{{ article.link }}"> {{ article.title }} </a></p>
             
-            <img src="../resource/bookmark.png" ng-click="clickSendID( article.id )">
-            
             <p id="published">Published {{ article.published | fromNow }} ... </p>
             
-            <img ng-src="{{ article.logo }}" >
+            <ul class="viewInts">
+                <li class ="int" ng-repeat="int in article.interests track by $index">
+                    <p> {{ int }} </p>
+                </li>
+            </ul>
             
-            <!--- So Far as I can tell, no summary is available from the API  -->
-            <p> Summary ?? is </p>
-        
         </section> 
 
     </li>
