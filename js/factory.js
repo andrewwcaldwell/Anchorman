@@ -73,7 +73,7 @@ module.exports = (function() {
                 for (let i = 0; i < news.length; i++) {
                     news[i].interests = [];
                     for (let j = 0; j < interests.length; j++) {
-                        var titleArr = news[i].title.split(' ');
+                        var titleArr = news[i].title.toLowerCase().split(' ');
                         console.log(titleArr);
                         for (let k = 0; k < titleArr.length; k++) {
                             if (titleArr[k] === interests[j]) {
@@ -126,7 +126,8 @@ module.exports = (function() {
             
             /// Function to Add New Interest to Interests Array
             addInterest: function(input) {
-                interests.push(input);
+                let holder = input.toLowerCase();
+                interests.push(holder);
                 /*for (let i = 0; i < interests.length; i++) {
                     if (interests[i] !== input) {
                         interests.push(input);
