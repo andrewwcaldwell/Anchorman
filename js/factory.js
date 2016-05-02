@@ -22,25 +22,23 @@ module.exports = (function() {
             method: 'get'
         });
         
-        $q.all([feed, pubs]).then(function(results) {
-            
+        $q.all([feed, pubs])
+        .then(function(results) {
             for (let i = 0; i < results[0].data.stories.length; i++) {
                 results[0].data.stories[i].provider = '';
                 results[0].data.stories[i].logo = '';
-                
                 for (let j = 0; j < results[1].data.providers.length; j++) {
-                    
-                    if (results[0].data.stories[i].providerId === results[1].data.providers[j].id) {
+                    if (results[0].data.stories[i].providerId ===           results[1].data.providers[j].id) {
                         results[0].data.stories[i].provider = results[1].data.providers[j].name;
                         results[0].data.stories[i].logo = results[1].data.providers[j].logo;
                     }
                 }
-            }
-            
-            for (let i = 0; i < results[0].data.stories.length; i++) {
                 news.push(results[0].data.stories[i]);
             }
         });
+                
+                
+ 
         
         //// THESE CALLS TO BOTH PUBLISHER AND FEED APIS CAN BE CANNED
         /*// ON-LOAD REQUEST TO NEWS FEED API
@@ -74,7 +72,7 @@ module.exports = (function() {
                     news[i].interests = [];
                     for (let j = 0; j < interests.length; j++) {
                         var titleArr = news[i].title.toLowerCase().split(' ');
-                        console.log(titleArr);
+                        //console.log(titleArr);
                         for (let k = 0; k < titleArr.length; k++) {
                             if (titleArr[k] === interests[j]) {
                                 news[i].interests.push(interests[j]);
@@ -82,9 +80,8 @@ module.exports = (function() {
                             }
                         }          
                     }
+                    
                 }
-                
-                console.log(news);
                 return news;
             },
             
@@ -133,7 +130,7 @@ module.exports = (function() {
                         interests.push(input);
                     }
                 }*/
-                console.log('Add To Interests Clicked')
+                //console.log('Add To Interests Clicked')
                 console.log(interests);
                 return interests;
             },
@@ -145,7 +142,7 @@ module.exports = (function() {
                         interests.splice(i, 1);
                     }
                 }
-                console.log('Removed From Interests clicked');
+                //console.log('Removed From Interests clicked');
                 console.log(interests);
                 return interests;
             },

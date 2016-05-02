@@ -19,10 +19,9 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 
 <!-- DOES INPUT NEED LABEL OR PLACEHOLDER??  -->
 <input id="search" type="text" ng-model="pancake">
-<p> {{ pancake }} </p>
 
 <ul>
-    <li class="article" ng-repeat="article in news | filter: pancake">
+    <li class="article" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
         
         <a href="{{ article.link }}"> <img ng-src="../resource/globe.png"/> </a>
         
