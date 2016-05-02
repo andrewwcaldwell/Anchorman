@@ -21,6 +21,7 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 <input id="search" type="text" ng-model="pancake">
 
 <ul>
+    <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
     <li class="article" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
         
         <a href="{{ article.link }}"> <img ng-src="../resource/globe.png"/> </a>
@@ -32,8 +33,10 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
             
             <p id="title"><a href="{{ article.link }}"> {{ article.title }} </a></p>
             
+            <!-- Applied Custom Filter from filters.js -->
             <p id="published">Published {{ article.published | fromNow }} ... </p>
             
+            <!-- ul for Interests that Match and have been applied as a new property of the Article -->
             <ul class="viewInts">
                 <li class ="int" ng-repeat="int in article.interests track by $index">
                     <p> {{ int }} </p>

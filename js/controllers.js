@@ -27,7 +27,7 @@ module.exports = (function() {
         // Code to Test Factory Link
         //console.log(NewsService.silento());
         
-        // Code to Add an Interest & Clear Input
+        // Code to Add an Interest & Clear Input Field / Value
         $scope.clickSendInput = function(input) {
             //console.log(input);
             NewsService.addInterest(input);
@@ -60,5 +60,5 @@ module.exports = (function() {
         $scope.clickSendID = function(ID) {NewsService.removeBookmark(ID);};
     }]);
     
-    
+/// Close IFFE Statement for Module - Immediately available when required in app.js    
 }());

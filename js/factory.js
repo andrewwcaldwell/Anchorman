@@ -38,9 +38,6 @@ module.exports = (function() {
         });
                 
         /// WEBSOCKET TO GET UPDATES
-        /// UPDATES ARE COMPARED TO NEWS ARRAY
-        /// IF UPDATE HAS NEW ID; UPDATE IS FUSED WITH PUBLISHERS
-        /// UPDATE IS ALSO ADDED TO NEWS & OLDEST ARTICLE IS REMOVED
         var ws = new WebSocket('ws://chat.queencityiron.com/api/feed');
         
         ws.onopen = function(event) {
@@ -48,6 +45,9 @@ module.exports = (function() {
             //console.log(event);
         };
         
+        /// UPDATES ARE COMPARED TO NEWS ARRAY
+        /// IF UPDATE HAS NEW ID; UPDATE IS FUSED WITH PUBLISHERS
+        /// UPDATE IS ALSO ADDED TO NEWS & OLDEST ARTICLE IS REMOVED
         ws.onmessage = function(event) {
             var response = event.data;
             console.log(event.data);
@@ -79,6 +79,8 @@ module.exports = (function() {
         return {
             
             /// Function to Deliver News Array to Feed/Input
+            /// Function Analyzes Artilce Titles and User Interest
+            /// Interest Matches Get Added to new Article Property
             getArticles: function () {
                 for (let i = 0; i < news.length; i++) {
                     news[i].interests = [];
@@ -137,17 +139,12 @@ module.exports = (function() {
             addInterest: function(input) {
                 let holder = input.toLowerCase();
                 interests.push(holder);
-                /*for (let i = 0; i < interests.length; i++) {
-                    if (interests[i] !== input) {
-                        interests.push(input);
-                    }
-                }*/
                 //console.log('Add To Interests Clicked')
                 console.log(interests);
                 return interests;
             },
             
-            /// Functino to Remove Interest from Interests 
+            /// Function to Remove Interest from Interests 
             removeInterests: function(input) {
                 for (let i = 0; i < interests.length; i++) {
                     if (interests[i] === input) {
@@ -163,17 +160,9 @@ module.exports = (function() {
             silento: function () {
                 return 'Watch me WHIP! now watch me NAE NAE!';
             },
-            
-            /// Function to Deliver Publishers
-            getPublishers: function () {
-                console.log(publishers);
-                return publishers;
-            },
-
-            
         };   
     });
-
+/// Close IFFE Statement for Module - Immediately available when required in app.js
 }());
 
 

@@ -24,6 +24,7 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 <p> {{ newInterest }} </p>
 
 <ul>
+    <!--- Applied Filters Interest Sorting Alphabetically -->
     <li ng-repeat="interest in interests | orderBy: -interest">
         <p> {{ interest }} </p>
         <img src="../resource/delete.png" ng-click="clickSendID( interest )">

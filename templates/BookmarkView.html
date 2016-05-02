@@ -18,6 +18,7 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 <h2> BOOKMARKS COMING </h2>
 
 <ul>
+    <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
     <li ng-repeat="article in news | orderBy:'-published' | filter: pancake">
         
         <a href="{{ article.link }}"> <img ng-src="../resource/globe.png"/> </a>
@@ -28,12 +29,10 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
             
             <img src="../resource/delete.png" ng-click="clickSendID( article.id )">
             
+            <!-- Applied Custom Filter from filters.js -->
             <p id="published">Published {{ article.published | fromNow }}...</p>
-            
-            <!--- So Far as I can tell, no summary is available from the API  -->
-            <p> Summary ?? is </p>
-        
+
         </section> 
 
-    </li>s
+    </li>
 </ul>
