@@ -8,24 +8,14 @@ module.exports = (function() {
         //console.log('Live Stream View Working');
         
         // Code to Test Factory Link
-        console.log(NewsService.silento());
+        //console.log(NewsService.silento());
 
         // Code to Get Initial Feed Articles
         $scope.news = NewsService.getArticles();
         
         
         // Code to Bookmark an Article
-        $scope.clickSendID = function(ID) {NewsService.setBookmark(ID);};        
-        
-//      function loadArticles(articles) {
-//          $scope.news = articles;
-//      }
-//    
-//      $scope.news = [];
-//      NewsService.getArticles(loadArticles);
-//      $scope.current = {
-//          title: 'none yet'
-//      };
+        $scope.clickSendID = function(ID) {NewsService.setBookmark(ID);};     
     }]);
 
     ////// Controller for INTERESTS //////
@@ -39,7 +29,7 @@ module.exports = (function() {
         
         // Code to Add an Interest & Clear Input
         $scope.clickSendInput = function(input) {
-            console.log(input);
+            //console.log(input);
             NewsService.addInterest(input);
             let a = document.getElementById('interestInput');
             a.value = '';
