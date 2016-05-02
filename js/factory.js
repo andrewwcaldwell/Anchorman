@@ -44,8 +44,8 @@ module.exports = (function() {
         var ws = new WebSocket('ws://chat.queencityiron.com/api/feed');
         
         ws.onopen = function(event) {
-            console.log('Websocket Open');
-            console.log(event);
+            //console.log('Websocket Open');
+            //console.log(event);
         };
         
         ws.onmessage = function(event) {
