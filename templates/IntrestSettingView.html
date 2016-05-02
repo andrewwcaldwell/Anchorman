@@ -4,29 +4,28 @@
 1) Please DON"T restructure HTML w/o some sort of conversation - particularly towards semantics
 **** ADDITIONS GOOD
 
-2) IDs / Classes can be changed as needed 
+2) IDs / Classes can be changed as needed
 
 3) Personal preferance to assign classes for CSS work only.
 
-4) Hold IDs for things requiring Jscript actions only 
-when possible. 
+4) Hold IDs for things requiring Jscript actions only
+when possible.
 
 
 PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 ------------------------------------------------->
-
-<h2> INTERESTS COMING </h2>
+<h3> INTERESTS COMING </h3>
 <span class="interestPanel">
     <input id="interestInput" type="text" ng-model="newInterest"/>
-    <img src="../resource/add.png" ng-click="clickSendInput( newInterest )"/>
+    <img id="plus" src="../resource/add.png" ng-click="clickSendInput( newInterest )"/>
 </span>
 
-<p> {{ newInterest }} </p>
+<p> #{{ newInterest }} </p>
 
 <ul>
     <!--- Applied Filters Interest Sorting Alphabetically -->
     <li ng-repeat="interest in interests | orderBy: -interest">
         <p> {{ interest }} </p>
-        <img src="../resource/delete.png" ng-click="clickSendID( interest )">
+        <img id="delete" src="../resource/delete.png" ng-click="clickSendID( interest )">
     </li>
 </ul>
