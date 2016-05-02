@@ -37,31 +37,43 @@ module.exports = (function() {
             }
         });
                 
+        /// WEBSOCKET TO GET UPDATES
+        /// UPDATES ARE COMPARED TO NEWS ARRAY
+        /// IF UPDATE HAS NEW ID; UPDATE IS FUSED WITH PUBLISHERS
+        /// UPDATE IS ALSO ADDED TO NEWS & OLDEST ARTICLE IS REMOVED
+        var ws = new WebSocket('ws://chat.queencityiron.com/api/feed');
+        
+        ws.onopen = function(event) {
+            //console.log('Websocket Open');
+            //console.log(event);
+        };
+        
+        ws.onmessage = function(event) {
+            var response = event.data;
+            console.log(event.data);
+            // if response is a news article
+            if (response.hasOwnProperty('id')) {
+                response.provider = '';
+                response.logo = '';
+                for (let i = 0; i < publishers.length; i++) {
+                    if (response.providerId === publishers[i].id) {
+                        response.provider = publishers[i].name;
+                        response.logo = publishers[i].logo;
+                    }
+                }
+                news.sort(function (a, b) {
+                    return a.published + b.published;
+                });
                 
+                for (let i = 0; i < news.length; i++) {
+                    if (response.id !== news[i].id) {
+                        news.pop();
+                        news.push(response);
+                    }
+                }
+            }
+        };
  
-        
-        //// THESE CALLS TO BOTH PUBLISHER AND FEED APIS CAN BE CANNED
-        /*// ON-LOAD REQUEST TO NEWS FEED API
-        $http({
-            url: 'http://chat.queencityiron.com/api/news/latest',
-            method: 'get'
-        }).then(function (results) {
-            for (let i = 0; i < results.data.stories.length; i++) {
-                news.push(results.data.stories[i]);
-            }
-            //        news = results.data.stories
-        });
-        
-        /// ON-LOAD REQUEST TO PROVIDERS API
-        $http({
-            url: 'http://chat.queencityiron.com/api/publishers',
-            method: 'get'
-        }).then(function (results) {
-            for (let i = 0; i < results.data.providers.length; i++) {
-                publishers.push(results.data.providers[i]);
-            }
-            
-        }); */
     
         /// FACTORY RETURN OBJECT 
         return {
