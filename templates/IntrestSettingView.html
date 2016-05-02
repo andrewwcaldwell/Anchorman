@@ -20,11 +20,12 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
     <img id="plus" src="../resource/add.png" ng-click="clickSendInput( newInterest )"/>
 </span>
 
-<p> {{ newInterest }} </p>
+<p> #{{ newInterest }} </p>
 
 <ul>
-    <li ng-repeat="interest in interests">
-        <p> #{{ interest }} </p>
+    <!--- Applied Filters Interest Sorting Alphabetically -->
+    <li ng-repeat="interest in interests | orderBy: -interest">
+        <p> {{ interest }} </p>
         <img id="delete" src="../resource/delete.png" ng-click="clickSendID( interest )">
     </li>
 </ul>
